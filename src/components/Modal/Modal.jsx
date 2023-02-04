@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 
 const modalRoot = document.querySelector('#modal-root');
 
-const Modal = ({ onClick, largeImageURL }) => {
+export const Modal = ({ onClick, largeImageURL }) => {
   useEffect(() => {
     const handleEscDown = e => {
       if (e.code === 'Escape') {
@@ -37,5 +37,3 @@ Modal.propTypes = {
   largeImageURL: PropTypes.string,
   onClick: PropTypes.func.isRequired,
 };
-
-export default Modal;

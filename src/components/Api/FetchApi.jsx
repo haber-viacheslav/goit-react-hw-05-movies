@@ -52,9 +52,9 @@ export const fetchMovieDetails = async filmId => {
 export const fetchMovieReviews = async filmId => {
   try {
     const response = await axios.get(
-      `movie/${filmId}/credits?api_key=76cbb606f190fc237086ec33f1fd98a3&language=en-US`
+      `movie/${filmId}/reviews?api_key=76cbb606f190fc237086ec33f1fd98a3&language=en-US`
     );
-    console.log(response.data);
+
     return response.data;
   } catch (error) {
     console.log(error);
@@ -64,9 +64,9 @@ export const fetchMovieReviews = async filmId => {
 export const fetchMovieCredits = async filmId => {
   try {
     const response = await axios.get(
-      `movie/${filmId}/reviews?api_key=76cbb606f190fc237086ec33f1fd98a3&language=en-US`
+      `movie/${filmId}/credits?api_key=76cbb606f190fc237086ec33f1fd98a3&language=en-US`
     );
-    console.log(response.data);
+
     return response.data;
   } catch (error) {
     console.log(error);

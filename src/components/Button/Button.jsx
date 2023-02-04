@@ -1,6 +1,6 @@
 import { LoadMoreBtn } from './Button.styled';
 
-const Button = ({ onClick }) => {
+export const Button = ({ onClick }) => {
   return (
     <LoadMoreBtn onClick={onClick} type="button">
       Show more
@@ -8,4 +8,3 @@ const Button = ({ onClick }) => {
   );
 };
 
-export default Button;

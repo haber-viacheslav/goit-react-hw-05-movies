@@ -4,7 +4,7 @@ import { LoadingWpr } from './Loader.styled';
 
 const LoaderSpiner = document.querySelector('#loader');
 
-const Loader = () => {
+export const Loader = () => {
   return createPortal(
     <LoadingWpr>
       <Rings
@@ -22,4 +22,3 @@ const Loader = () => {
   );
 };
 
-export default Loader;

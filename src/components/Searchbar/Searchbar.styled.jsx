@@ -1,29 +1,10 @@
 import styled from 'styled-components';
 
-export const SearchbarWrp = styled.header`
-  top: 0;
-  left: 0;
-  position: fixed;
-  width: 100%;
-  z-index: 1100;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 64px;
-  padding-right: 24px;
-  padding-left: 24px;
-  padding-top: 12px;
-  padding-bottom: 12px;
-  color: #fff;
-
-  background-color: #1201f68a;
-  padding: 20px;
-
-  box-shadow: 0px 2px 4px -1px #0038a8cc, 0px 4px 5px 0px #0055ffcc,
-    0px 1px 10px 0px #011f5ccc;
-`;
-
 export const SearchForm = styled.form`
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
   align-items: center;
   width: 100%;
