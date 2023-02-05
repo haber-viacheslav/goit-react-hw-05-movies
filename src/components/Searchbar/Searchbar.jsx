@@ -4,13 +4,13 @@ import {
   SearchFormBtnLabel,
   SearchFormInput,
 } from './Searchbar.styled';
-
+import PropTypes from 'prop-types';
 import { FcSearch } from 'react-icons/fc';
 
-export const Searchbar = ({ onSubmit, movieName }) => {
+export const Searchbar = ({ onSubmit }) => {
   const handleSubmit = e => {
     e.preventDefault();
-    onSubmit(e.target.search.value.trim());
+    onSubmit(e.target.search.value.trim().toLowerCase());
     e.currentTarget.reset();
   };
   return (
@@ -27,4 +27,8 @@ export const Searchbar = ({ onSubmit, movieName }) => {
       />
     </SearchForm>
   );
+};
+
+Searchbar.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
 };

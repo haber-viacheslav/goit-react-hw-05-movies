@@ -13,10 +13,11 @@ export const API_KEY = '76cbb606f190fc237086ec33f1fd98a3';
 
 axios.defaults.baseURL = 'https://api.themoviedb.org/3/';
 
-export const fetchTrandingMovies = async (pageNumber = 1) => {
+export const fetchTrandingMovies = async (pageNumber = 1, options) => {
   try {
     const response = await axios.get(
-      `trending/all/day?api_key=${API_KEY}&page=${pageNumber}`
+      `trending/all/day?api_key=${API_KEY}&page=${pageNumber}`,
+      options
     );
 
     return response.data;
@@ -25,10 +26,11 @@ export const fetchTrandingMovies = async (pageNumber = 1) => {
   }
 };
 
-export const fetchSearchMovies = async (searchQuery, pageNumber) => {
+export const fetchSearchMovies = async (searchQuery, pageNumber, options) => {
   try {
     const response = await axios.get(
-      `search/movie?api_key=${API_KEY}&language=en-US&query=${searchQuery}&page=${pageNumber}&include_adult=false`
+      `search/movie?api_key=${API_KEY}&language=en-US&query=${searchQuery}&page=${pageNumber}&include_adult=false`,
+      options
     );
 
     return response.data;
@@ -37,10 +39,11 @@ export const fetchSearchMovies = async (searchQuery, pageNumber) => {
   }
 };
 
-export const fetchMovieDetails = async filmId => {
+export const fetchMovieDetails = async (filmId, options) => {
   try {
     const response = await axios.get(
-      `movie/${filmId}?api_key=76cbb606f190fc237086ec33f1fd98a3&language=en-US`
+      `movie/${filmId}?api_key=76cbb606f190fc237086ec33f1fd98a3&language=en-US`,
+      options
     );
 
     return response.data;
@@ -49,10 +52,11 @@ export const fetchMovieDetails = async filmId => {
   }
 };
 
-export const fetchMovieReviews = async filmId => {
+export const fetchMovieReviews = async (filmId, options) => {
   try {
     const response = await axios.get(
-      `movie/${filmId}/reviews?api_key=76cbb606f190fc237086ec33f1fd98a3&language=en-US`
+      `movie/${filmId}/reviews?api_key=76cbb606f190fc237086ec33f1fd98a3&language=en-US`,
+      options
     );
 
     return response.data;
@@ -61,10 +65,11 @@ export const fetchMovieReviews = async filmId => {
   }
 };
 
-export const fetchMovieCredits = async filmId => {
+export const fetchMovieCredits = async (filmId, options) => {
   try {
     const response = await axios.get(
-      `movie/${filmId}/credits?api_key=76cbb606f190fc237086ec33f1fd98a3&language=en-US`
+      `movie/${filmId}/credits?api_key=76cbb606f190fc237086ec33f1fd98a3&language=en-US`,
+      options
     );
 
     return response.data;
