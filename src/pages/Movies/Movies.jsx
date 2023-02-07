@@ -6,8 +6,8 @@ import { MoviesGallery } from 'components/MoviesGallery/MoviesGallery';
 import { Button } from 'components/Button/Button';
 import { uniqueBy } from 'components/helpers/uniqueBy';
 import { useSearchParams } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import { Section } from 'components/Section/Section';
+import PropTypes from 'prop-types';
 
 const Movies = () => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -19,10 +19,17 @@ const Movies = () => {
   const movieName = searchParams.get('query') ?? '';
 
   useEffect(() => {
+    const controller = new AbortController();
+    setIsLoading(true);
     const getMovieBySearch = async (query, page) => {
       try {
-        setIsLoading(true);
-        const data = await fetchSearchMovies(query, page);
+        const data = await fetchSearchMovies(query, page, {
+          signal: controller.signal,
+        });
+
+        if (!data.results) {
+          return;
+        }
         setTotalPages(data.total_pages);
         setMovies(prevMovies => {
           return page === 1 ? data.results : [...prevMovies, ...data.results];
@@ -41,16 +48,20 @@ const Movies = () => {
       return;
     }
     getMovieBySearch(searchQuery, page);
+    return () => controller.abort();
   }, [searchQuery, page]);
 
   useEffect(() => {
+    const controller = new AbortController();
     const getMovieBySearch = async (query, page) => {
       try {
         if (!movieName) {
           return;
         }
         setIsLoading(true);
-        const data = await fetchSearchMovies(query, page);
+        const data = await fetchSearchMovies(query, page, {
+          signal: controller.signal,
+        });
         setTotalPages(data.total_pages);
         setMovies(prevMovies => {
           return page === 1 ? data.results : [...prevMovies, ...data.results];
@@ -67,6 +78,7 @@ const Movies = () => {
     };
 
     getMovieBySearch(movieName, page);
+    return () => controller.abort();
   }, [movieName, page]);
 
   const handleOnSearch = query => {
@@ -83,19 +95,21 @@ const Movies = () => {
   const handleOnLoad = () => {
     setPage(prevPage => prevPage + 1);
   };
-  return (
-    <main>
-      <Searchbar movieName={movieName} onSubmit={handleOnSearch} />
-      <Section>
-        <MoviesGallery movies={movies} />
-      </Section>
+  if (movies) {
+    return (
+      <main>
+        <Searchbar movieName={movieName} onSubmit={handleOnSearch} />
+        <Section>
+          <MoviesGallery movies={movies} />
+        </Section>
 
-      {isLoading && <Loader />}
-      {!!movies.length && page < totalPages && (
-        <Button onClick={handleOnLoad} />
-      )}
-    </main>
-  );
+        {isLoading && <Loader />}
+        {!!movies.length && page < totalPages && (
+          <Button onClick={handleOnLoad} />
+        )}
+      </main>
+    );
+  }
 };
 
 Movies.propTypes = {

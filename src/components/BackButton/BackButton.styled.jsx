@@ -1,15 +1,15 @@
 import styled from 'styled-components';
 export const StyledBackBtn = styled.button`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 100%;
-  padding: 0;
+  position: absolute;
+  border-radius: 50%;
+  top: 20px;
+  left: 20px;
   width: 24px;
   height: 24px;
-  color: #fff;
-  border: 0;
+  padding: 0;
   background-color: transparent;
+  border: none;
+  color: #ffffff;
   box-shadow: 2px 2px 3px #2e2bc2;
   transition: 250ms transform ease-in-out, 300ms box-shadow ease-out,
     150ms color ease-in;

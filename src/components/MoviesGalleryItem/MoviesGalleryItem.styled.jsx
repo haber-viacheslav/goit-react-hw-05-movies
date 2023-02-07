@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 export const MoviesGalleryItemWrp = styled.li`
   flex-basis: calc((100% - 3 * 20px) / 4);
-  border-radius: 4px;
+  border-radius: 6px;
   color: #ffffff;
   background: linear-gradient(145deg, #0d013e, #2711ba);
   box-shadow: 2px 6px 8px #2e2bc2, -2px -2px 6px #1d06eb;
@@ -18,6 +18,7 @@ export const MoviesGalleryItemWrp = styled.li`
 `;
 
 export const StyledLink = styled(NavLink)`
+  font-family: inherit;
   text-decoration: none;
   color: #ffffff;
   &.active {
@@ -33,14 +34,14 @@ export const MoviesGalleryImageWrp = styled.div`
 export const MoviesGalleryImg = styled.img`
   width: 100%;
   object-fit: cover;
-  height: 545px;
+  height: 450px;
 `;
 
 export const MoviesGalleryContentWrp = styled.div`
-  padding: 20px 10px;
+  padding: 14px;
 `;
 
-export const MoviesGalleryTitle = styled.h1`
+export const MoviesGalleryTitle = styled.h2`
   font-size: 22px;
   font-weight: 500;
   height: 80px;

@@ -1,3 +1,4 @@
+import { NotFoundTitle } from './NotFound.styled';
 export const NotFound = () => {
-  return <h2>Not found</h2>;
+  return <NotFoundTitle>Not found</NotFoundTitle>;
 };

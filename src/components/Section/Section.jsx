@@ -1,16 +1,19 @@
 import PropTypes from 'prop-types';
 import { SectionWrp, SectionTitle } from './Section.styled';
+import { Container } from 'components/SharedLayout/SharedLayout.styled';
 
 export const Section = ({ title, children }) => {
   return (
     <SectionWrp>
-      <SectionTitle>{title}</SectionTitle>
-      {children}
+      <Container>
+        <SectionTitle>{title}</SectionTitle>
+        {children}
+      </Container>
     </SectionWrp>
   );
 };
 
 Section.propTypes = {
   title: PropTypes.string,
-  children: PropTypes.node,
+  children: PropTypes.any,
 };

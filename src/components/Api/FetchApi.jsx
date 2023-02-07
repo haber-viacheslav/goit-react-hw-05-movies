@@ -1,4 +1,5 @@
 import axios from 'axios';
+
 //api.themoviedb.org/3/trending/movie/week?api_key=76cbb606f190fc237086ec33f1fd98a3&page=1 -----trand
 
 //api.themoviedb.org/3/search/movie?api_key=76cbb606f190fc237086ec33f1fd98a3&language=en-US&query=cats&page=1&include_adult=false -----search

@@ -1,7 +1,10 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 export const Container = styled.div`
-  padding: 0 20px;
+  margin: 0 auto;
+  width: 1280px;
+  padding-right: 20px;
+  padding-left: 20px;
 `;
 
 export const Header = styled.header`
@@ -11,16 +14,18 @@ export const Header = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px;
+  padding: 20px 0;
 `;
 
 export const MainNav = styled.nav`
+  margin-right: auto;
   display: flex;
   align-items: center;
   gap: 10px;
 `;
 
 export const StyledLink = styled(NavLink)`
+  font-family: inherit;
   padding: 6px 10px;
   outline: none;
   border-radius: 10px;

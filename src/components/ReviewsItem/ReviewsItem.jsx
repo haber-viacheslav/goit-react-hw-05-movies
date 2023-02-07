@@ -1,4 +1,13 @@
+import PropTypes from 'prop-types';
 import { urlGenerator } from 'components/helpers/urlGenerator';
+import {
+  ReviewStyledItem,
+  ReviewImg,
+  ReviewContentWrp,
+  ReviewTitle,
+  ReviewDescr,
+} from './ReviewsItem.styled';
+
 export const ReviewItem = ({
   review: {
     author,
@@ -6,13 +15,23 @@ export const ReviewItem = ({
     content,
   },
 }) => {
-  console.log('avatar_path', avatar_path);
-
   return (
-    <li>
-      <img src={urlGenerator(avatar_path)} alt={author} />
-      <h3>{author}</h3>
-      <p>{content}</p>
-    </li>
+    <ReviewStyledItem>
+      <ReviewImg src={urlGenerator(avatar_path)} alt={author} />
+      <ReviewContentWrp>
+        <ReviewTitle>{author}</ReviewTitle>
+        <ReviewDescr>{content}</ReviewDescr>
+      </ReviewContentWrp>
+    </ReviewStyledItem>
   );
+};
+
+ReviewItem.propTypes = {
+  review: PropTypes.shape({
+    author: PropTypes.string,
+    author_details: PropTypes.shape({
+      avatar_path: PropTypes.string,
+    }),
+    content: PropTypes.string,
+  }),
 };
